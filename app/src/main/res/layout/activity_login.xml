@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#7ab9fd"
-    tools:context="com.js.firebaseauthentication.MainActivity">
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
 
     <TextView
         android:layout_gravity="center_horizontal"

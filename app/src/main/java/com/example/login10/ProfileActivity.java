@@ -27,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextView textViewUserEmail;
     private Button buttonLogout;
     private TextView textivewDelete;
+    private Button buttonGoToMain;//////////////////////
 
 
     @Override
@@ -38,6 +39,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
         buttonLogout = (Button) findViewById(R.id.buttonLogout);
         textivewDelete = (TextView) findViewById(R.id.textviewDelete);
+        buttonGoToMain = (Button) findViewById(R.id.goToMain);  /////////////
+
+        buttonGoToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ProfileActivity.this, MainActivityCal.class);
+                startActivity(intent);
+            }
+        });
 
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
