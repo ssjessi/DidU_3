@@ -9,19 +9,19 @@ public class PlanItemData {
     String date;
     String time;
     String alarm;
-//    String key;
+    String key;
 //    ToggleButton complete;
 
     public PlanItemData() {
     }
 
-    public PlanItemData(String planName, String memo, String date, String time, String alarm) {//, String key, ToggleButton complete) {
+    public PlanItemData(String planName, String memo, String date, String time, String alarm, String key) {//, ToggleButton complete) {
         this.planName = planName;
         this.memo = memo;
         this.date = date;
         this.time = time;
         this.alarm = alarm;
-//        this.key = key;
+        this.key = key;
 //        this.complete = complete;
     }
 
@@ -33,13 +33,13 @@ public class PlanItemData {
 //        this.complete = complete;
 //    }
 
-//    public String getKey() {
-//        return key;
-//    }
-//
-//    public void setKey(String key) {
-//        this.key = key;
-//    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getPlanName() {
         return planName;

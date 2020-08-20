@@ -14,9 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.FirebaseApiNotAvailableException;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,10 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivityCal extends AppCompatActivity {
+public class PlanListActivity extends AppCompatActivity {
 
-    TextView myList; //, today;
-    Button addNewButton, showListButton;
+    TextView myList, today;
+    Button addNewButton, backHome;
 
     DatabaseReference reference;
     RecyclerView myPlans;
@@ -50,90 +47,59 @@ public class MainActivityCal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_cal);
+        setContentView(R.layout.activity_plan_list);
 
         myList=findViewById(R.id.MyList);
-        // today=findViewById(R.id.today);
+        today=findViewById(R.id.today);
         addNewButton=findViewById(R.id.addNewButton);
-        showListButton=findViewById(R.id.showListButton);
-
-//        // Firebase 2개 연결
-//        FirebaseDatabase database=FirebaseDatabase.getInstance();
-//        FirebaseOptions options=new FirebaseOptions.Builder().setApplicationId("com.example.login10").setApiKey("AIzaSyARFTeQWQXYEmvmp_7tdS9QHmB_XtFTczg").setDatabaseUrl("https://didu1je.firebaseio.com/").build();
-//        FirebaseApp.initializeApp(this, options, "second");
-//        // Retrieve my other app;
-//        FirebaseApp app= FirebaseApp.getInstance("second");
-//        // Get the database for the other app
-//        FirebaseDatabase secondDatabase=FirebaseDatabase.getInstance(app);
+        backHome=findViewById(R.id.BackHome);
 
         addNewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivityCal.this, AddNewPlanActivity.class);
+                Intent intent=new Intent(PlanListActivity.this, AddNewPlanActivity.class);
                 startActivity(intent);
             }
         });
 
-        showListButton.setOnClickListener(new View.OnClickListener() {
+        backHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivityCal.this, PlanListActivity.class);
+                Intent intent=new Intent(PlanListActivity.this, MainActivityCal.class);
                 startActivity(intent);
             }
         });
 
-        // today.setText(cYear+" / "+cMonth+" / "+cDate);
+        today.setText(cYear+" / "+cMonth+" / "+cDate);
 
         // working with data
         myPlans=findViewById(R.id.MyPlans);
-        myPlans.setHasFixedSize(true); //
         myPlans.setLayoutManager(new LinearLayoutManager(this));
         list=new ArrayList<PlanItemData>();
 
-//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         // get data from FireBase
-        reference=FirebaseDatabase.getInstance().getReference().child("DidU1");
+        reference = FirebaseDatabase.getInstance().getReference().child("DidU1");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren())
+                // set code to retrive data and replace layout
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
                 {
                     PlanItemData planItemData=dataSnapshot1.getValue(PlanItemData.class);
                     list.add(planItemData);
                 }
 
-                planAdapter=new PlanAdapter(MainActivityCal.this, list);
+                planAdapter=new PlanAdapter(PlanListActivity.this, list);
                 myPlans.setAdapter(planAdapter);
                 planAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                // set code to show error
+                Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
             }
         });
-//        reference = FirebaseDatabase.getInstance().getReference().child("DidU1");
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                // set code to retrive data and replace layout
-//                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren())
-//                {
-//                    PlanItemData planItemData=dataSnapshot1.getValue(PlanItemData.class);
-//                    list.add(planItemData);
-//                }
-//                planAdapter=new PlanAdapter(MainActivityCal.this, list);
-//                myPlans.setAdapter(planAdapter);
-//                planAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                // set code to show error
-//                Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
     }
 
     public void OnClickHandlerDate(View view)

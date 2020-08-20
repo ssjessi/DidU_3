@@ -20,6 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivityCal"></activity>
+        <activity android:name=".PlanListActivity"></activity>
+        <activity android:name=".AddNewPlanActivity"></activity>
+        <activity android:name=".EditPlanActivity"></activity>
     </application>
 
 </manifest>

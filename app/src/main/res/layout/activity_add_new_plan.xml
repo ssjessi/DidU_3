@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityCal">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="#000" >
+
+        <TextView
+            android:id="@+id/MyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:textSize="24sp"
+            android:layout_marginBottom="25dp"
+            android:text="@string/add_new_plan"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:gravity="center_horizontal" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#000" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="493dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-50dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/background_list"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/background_list"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/planName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/plan"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/AddPlanName"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="@string/what_is_your_plan"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="@string/date"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selectedDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/addDate"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_addbutton"
+                android:onClick="OnClickHandlerDate"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/choose_date"
+                android:textColor="#FFF" />
+
+            <TextView
+                android:id="@+id/Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="7dp"
+                android:text="@string/time"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selectedTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/addTime"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_addbutton"
+                android:onClick="OnClickHandlerTime"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/choose_time"
+                android:textColor="#FFF" />
+
+            <TextView
+                android:id="@+id/Alarm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/Alarm"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <ToggleButton
+                android:id="@+id/addAlarm"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/background_addbutton"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#FFF" />
+
+            <TextView
+                android:id="@+id/Memo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/memo"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/AddMemo"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="35dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="@string/write_memo"
+                android:inputType="text"
+                android:maxLength="80"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+        </LinearLayout>
+    </ScrollView>
+    
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/save"
+        android:textColor="#FFF"
+        android:background="@drawable/background_button"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/CancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/cancel"
+        android:textColor="#AFAFAF"
+        android:background="@drawable/background_cancel_button"
+        android:textSize="18sp" />
+
+</LinearLayout>

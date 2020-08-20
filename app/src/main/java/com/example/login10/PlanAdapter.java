@@ -52,21 +52,21 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
         final String getDateGet=planItemData.get(position).getDate();
         final String getTimeGet=planItemData.get(position).getTime();
         final String getAlarmGet=planItemData.get(position).getAlarm();
-//        final String getKeyGet=planItemData.get(position).getKey();
+        final String getKeyGet=planItemData.get(position).getKey();
 
-//        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent2=new Intent(context, EditPlanActivity.class);
-//                intent2.putExtra("planName", getPlanNameGet);
-//                intent2.putExtra("memo", getMemoGet);
-//                intent2.putExtra("date", getDateGet);
-//                intent2.putExtra("time", getTimeGet);
-//                intent2.putExtra("alarm", getAlarmGet);
-//                intent2.putExtra("key", getKeyGet);
-//                context.startActivity(intent2);
-//            }
-//        });
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2=new Intent(context, EditPlanActivity.class);
+                intent2.putExtra("planName", getPlanNameGet);
+                intent2.putExtra("memo", getMemoGet);
+                intent2.putExtra("date", getDateGet);
+                intent2.putExtra("time", getTimeGet);
+                intent2.putExtra("alarm", getAlarmGet);
+                intent2.putExtra("key", getKeyGet);
+                context.startActivity(intent2);
+            }
+        });
     }
 
     @Override
@@ -77,7 +77,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
     class MyViewHolder extends RecyclerView.ViewHolder
     {
         TextView planName, memo, date, time, alarm, key;
-        ToggleButton complete;
+//        ToggleButton complete;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +87,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
             date=(TextView) itemView.findViewById(R.id.date);
             time=(TextView) itemView.findViewById(R.id.time);
             alarm=(TextView) itemView.findViewById(R.id.alarm);
-            complete=(ToggleButton) itemView.findViewById(R.id.completeOX);
+//            complete=(ToggleButton) itemView.findViewById(R.id.completeOX);
         }
     }
 
