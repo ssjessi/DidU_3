@@ -15,6 +15,8 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,7 @@ public class AddNewPlanActivity extends AppCompatActivity {
     Integer planNumber=new Random().nextInt(10000)+1; // For unique number // planNumber=='id' of plans
     String key=Integer.toString(planNumber);
     String alarmTime;
+    FirebaseAuth firebaseAuth; //Firebase UID
 
     // 현재 시각 구하기
     Calendar calendar=Calendar.getInstance();
@@ -82,11 +85,18 @@ public class AddNewPlanActivity extends AppCompatActivity {
         addPlanName.setPrivateImeOptions("defaultInputmode=korean;");
         addMemo.setPrivateImeOptions("defaultInputmode=korean;");
 
+        //Firebase UID
+        firebaseAuth = FirebaseAuth.getInstance();
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // insert data to FireBase
-                reference= FirebaseDatabase.getInstance().getReference().child("DidU1").child("Plan"+planNumber);
+
+                //Firebase UID
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                reference= FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Plan"+planNumber);
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

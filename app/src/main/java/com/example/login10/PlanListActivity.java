@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,9 @@ public class PlanListActivity extends AppCompatActivity {
     RecyclerView myPlans;
     ArrayList<PlanItemData> list;
     PlanAdapter planAdapter;
+
+    //Firebase Uid
+    FirebaseAuth firebaseAuth;
 
     // 현재 시각 구하기
     Calendar calendar=Calendar.getInstance();
@@ -53,6 +58,10 @@ public class PlanListActivity extends AppCompatActivity {
         today=findViewById(R.id.today);
         addNewButton=findViewById(R.id.addNewButton);
         backHome=findViewById(R.id.BackHome);
+
+        //Firebase Uid
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
         addNewButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +87,7 @@ public class PlanListActivity extends AppCompatActivity {
         list=new ArrayList<PlanItemData>();
 
         // get data from FireBase
-        reference = FirebaseDatabase.getInstance().getReference().child("DidU1");
+        reference = FirebaseDatabase.getInstance().getReference().child(user.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

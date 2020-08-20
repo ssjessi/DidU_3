@@ -17,6 +17,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressDialog progressDialog;
     //define firebase object
     FirebaseAuth firebaseAuth;
+
+    // 지은 추가
+    DatabaseReference reference;
+    Integer planNumber=new Random().nextInt(10000)+1; // For unique number // planNumber=='id' of plans
+    String key=Integer.toString(planNumber);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Firebse creating a new user
     private void registerUser(){
         //사용자가 입력하는 email, password를 가져온다.
-        String email = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         //email과 password가 비었는지 아닌지를 체크 한다.
         if(TextUtils.isEmpty(email)){
@@ -78,11 +91,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                            if(task.isSuccessful()){
+                                finish();
+                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
+                                // 지은 추가
+                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                // insert data to FireBase
+                                reference= FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Plan"+planNumber);
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        dataSnapshot.getRef().child("planName").setValue("일정 이름 예시");
+                                        dataSnapshot.getRef().child("date").setValue("년도 / 월 / 일");
+                                        dataSnapshot.getRef().child("time").setValue("몇시 몇분");
+                                        dataSnapshot.getRef().child("alarm").setValue("알람 ON/OFF 여부");
+                                        dataSnapshot.getRef().child("memo").setValue("일정 메모 예시");
+                                        dataSnapshot.getRef().child("key").setValue(key);
+//                        dataSnapshot.getRef().child("complete").setValue(complete.getText().toString());
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
                         } else {
                             //에러발생시
                             textviewMessage.setText("에러유형\n - 이미 등록된 이메일  \n -암호 최소 6자리 이상 \n - 서버에러");

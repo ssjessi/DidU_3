@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,9 @@ public class EditPlanActivity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener callbackMethodDate;
     private TimePickerDialog.OnTimeSetListener callbackMethodTime;
     DatabaseReference reference;
+
+    //Firebase Uid
+    FirebaseAuth firebaseAuth;
 
     // 현재 시각 구하기
     Calendar calendar=Calendar.getInstance();
@@ -69,6 +74,10 @@ public class EditPlanActivity extends AppCompatActivity {
         saveChangesButton=findViewById(R.id.SaveChangesButton);
         deleteButton=findViewById(R.id.DeleteButton);
 
+        //Firebase Uid
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
         // Date 설정 관련 코드
         this.InitializeViewDate();
         this.InitializeListenerDate();
@@ -84,26 +93,7 @@ public class EditPlanActivity extends AppCompatActivity {
         addMemo.setText(getIntent().getStringExtra("memo"));
         final String keyKey=getIntent().getStringExtra("key");
 
-        reference= FirebaseDatabase.getInstance().getReference().child("DidU1").child("Plan"+keyKey);
-
-        // Make button Event(DeleteButton)
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
-                            startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
+        reference= FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Plan"+keyKey);
 
         // Make button Event(SaveChangesButton)
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +116,25 @@ public class EditPlanActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    }
+                });
+            }
+        });
+
+        // Make button Event(DeleteButton)
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

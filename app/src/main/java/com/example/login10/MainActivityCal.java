@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.FirebaseApiNotAvailableException;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,9 @@ public class MainActivityCal extends AppCompatActivity {
     RecyclerView myPlans;
     ArrayList<PlanItemData> list;
     PlanAdapter planAdapter;
+
+    //Firebase Uid
+    FirebaseAuth firebaseAuth;
 
     // 현재 시각 구하기
     Calendar calendar=Calendar.getInstance();
@@ -58,6 +63,9 @@ public class MainActivityCal extends AppCompatActivity {
         addNewButton=findViewById(R.id.addNewButton);
         showListButton=findViewById(R.id.showListButton);
         userButton = findViewById(R.id.userButton);
+
+        //Firebase Uid
+        firebaseAuth = FirebaseAuth.getInstance();
 
 //        // Firebase 2개 연결
 //        FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -102,7 +110,10 @@ public class MainActivityCal extends AppCompatActivity {
 
 //        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         // get data from FireBase
-        reference=FirebaseDatabase.getInstance().getReference().child("DidU1");
+        //Firebase Uid
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        reference=FirebaseDatabase.getInstance().getReference().child(user.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
