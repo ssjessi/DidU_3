@@ -30,6 +30,7 @@ public class MainActivityCal extends AppCompatActivity {
 
     TextView myList; //, today;
     Button addNewButton, showListButton;
+    Button userButton;
 
     DatabaseReference reference;
     RecyclerView myPlans;
@@ -56,6 +57,7 @@ public class MainActivityCal extends AppCompatActivity {
         // today=findViewById(R.id.today);
         addNewButton=findViewById(R.id.addNewButton);
         showListButton=findViewById(R.id.showListButton);
+        userButton = findViewById(R.id.userButton);
 
 //        // Firebase 2개 연결
 //        FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -78,6 +80,14 @@ public class MainActivityCal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivityCal.this, PlanListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        userButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivityCal.this, UserActivity.class);
                 startActivity(intent);
             }
         });
@@ -147,4 +157,15 @@ public class MainActivityCal extends AppCompatActivity {
         TimePickerDialog dialog=new TimePickerDialog(this, callbackMethodTime, cHour, cMinute, true);
         dialog.show();;
     }
+
+//    @Override
+//    public void onClick(View view) {
+////        if(view == buttonSignin) {
+////            userLogin();
+////        }
+//        if(view == userButton) {
+//            finish();
+//            startActivity(new Intent(this, MainActivity.class));
+//        }
+//    }
 }

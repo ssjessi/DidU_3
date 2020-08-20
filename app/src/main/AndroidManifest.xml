@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FindActivity"></activity>
+        <activity android:name=".UserActivity"></activity>
+        <activity android:name=".FindActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
@@ -19,10 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivityCal"></activity>
-        <activity android:name=".PlanListActivity"></activity>
-        <activity android:name=".AddNewPlanActivity"></activity>
-        <activity android:name=".EditPlanActivity"></activity>
+        <activity android:name=".MainActivityCal" />
+        <activity android:name=".PlanListActivity" />
+        <activity android:name=".AddNewPlanActivity" />
+        <activity android:name=".EditPlanActivity" />
     </application>
 
 </manifest>
