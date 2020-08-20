@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:id="@+id/drawer"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <TextView
+        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_horizontal"
+        android:text="일정추가"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="일정확인"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:gravity="center_horizontal"
+        android:text="수강교환등록"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:text="수강교환찾기"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:gravity="center_horizontal"
+        android:text="Message"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
+
+</LinearLayout>
