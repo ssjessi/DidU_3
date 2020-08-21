@@ -33,7 +33,7 @@ import java.util.Calendar;
 public class MainActivityCal extends AppCompatActivity {
 
     // 화면 연결
-    TextView toAddPlan, toCheckPlan;
+    TextView toAddPlan, toCheckPlan, toCourseRegi;
     TextView myList; //, today;
     Button addNewButton, showListButton;
     Button userButton;
@@ -72,6 +72,7 @@ public class MainActivityCal extends AppCompatActivity {
         // 화면 연결
         toAddPlan=(TextView) findViewById(R.id.toAddPlan);
         toCheckPlan=(TextView) findViewById(R.id.toCheckPlan);
+        toCourseRegi=(TextView) findViewById(R.id.toCourseRegi);
 
         toAddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +86,14 @@ public class MainActivityCal extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivityCal.this, PlanListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toCourseRegi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivityCal.this, CourseRegistrationActivity.class);
                 startActivity(intent);
             }
         });

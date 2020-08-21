@@ -49,22 +49,13 @@
         android:textSize="25dp" />
 
     <TextView
+        android:id="@+id/toCourseRegi"
         android:layout_width="match_parent"
         android:elegantTextHeight="true"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:text="수강교환등록"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:elegantTextHeight="true"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:text="수강교환찾기"
+        android:text="수강 정원 확인"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 

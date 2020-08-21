@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CourseRegistrationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="444dp"
+        android:background="#D8D8D8"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/BackHome"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="#D8D8D8"
+            android:contentDescription="@string/todo"
+            android:text="@string/backHome"
+            android:textColor="#5E5D5D"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/MyList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="수강 정원 확인"
+            android:textAlignment="center"
+            android:textColor="#5E5D5D"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="501dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-300dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/background_list"
+        android:orientation="vertical"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/background_list"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:text="포털 아이디"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/student_id"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="학번"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="포털 비밀번호"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/student_pw"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="비밀번호"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+
+
+            <TextView
+                android:id="@+id/lec_Num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="학수 번호"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/addLec_Num"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="학수번호"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+
+            <TextView
+                android:id="@+id/div_class_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="분반"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/add_div_class_num"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:autofillHints=""
+                android:background="@drawable/background_input_plan"
+                android:hint="분반이 없을 경우 1을 입력"
+                android:inputType="text"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000"
+                android:textColorHint="#808080" />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/SaveButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/save"
+        android:textColor="#FFF"
+        android:background="@drawable/background_button"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/CancelButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/cancel"
+        android:textColor="#AFAFAF"
+        android:background="@drawable/background_cancel_button"
+        android:textSize="18sp" />
+</LinearLayout>
