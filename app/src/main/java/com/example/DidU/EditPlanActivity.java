@@ -1,4 +1,4 @@
-package com.example.login10;
+package com.example.DidU;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -29,6 +29,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,66 +40,65 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
-import java.util.Random;
 
-public class AddNewPlanActivity extends AppCompatActivity {
-
-    TextView myList, planName, date, selectedDate, time, selectedTime, alarm, memo, repeatDay, selectedRepeatDay, toAddPlan;
+public class EditPlanActivity extends AppCompatActivity {
+    TextView myList, planName, date, selectedDate, time, selectedTime, alarm, memo, repeatDay, selectedRepeatDay;
     EditText addPlanName, addMemo;
-    Button addDate, addTime, saveButton, cancelButton, addRepeat, BackHome;
+    Button addDate, addTime, saveChangesButton, deleteButton, addRepeat, BackHome;
     ToggleButton addAlarm;
-    //    ToggleButton complete;
     private DatePickerDialog.OnDateSetListener callbackMethodDate;
     private TimePickerDialog.OnTimeSetListener callbackMethodTime;
     DatabaseReference reference;
-    Integer planNumber = new Random().nextInt(10000) + 1; // For unique number // planNumber=='id' of plans
-    String key = Integer.toString(planNumber);
-    String alarmTime;
-    FirebaseAuth firebaseAuth; //Firebase UID
+
+    //Firebase Uid
+    FirebaseAuth firebaseAuth;
 
     // 현재 시각 구하기
-    Calendar calendar = Calendar.getInstance();
-    int cYear = calendar.get(Calendar.YEAR);
-    int cMonth = calendar.get(Calendar.MONTH);
-    int cDate = calendar.get(Calendar.DATE);
-    int cHour = calendar.get(Calendar.HOUR_OF_DAY);
-    int cMinute = calendar.get(Calendar.MINUTE);
+    Calendar calendar=Calendar.getInstance();
+    int cYear=calendar.get(Calendar.YEAR);
+    int cMonth=calendar.get(Calendar.MONTH);
+    int cDate=calendar.get(Calendar.DATE);
+    int cHour=calendar.get(Calendar.HOUR_OF_DAY);
+    int cMinute=calendar.get(Calendar.MINUTE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_plan);
+        setContentView(R.layout.activity_edit_plan);
 
         // keyboard가 UI 가릴 때
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        myList = findViewById(R.id.MyList);
-        planName = findViewById(R.id.planName);
-        addPlanName = findViewById(R.id.AddPlanName);
+        myList=findViewById(R.id.MyList);
+        planName=findViewById(R.id.planName);
+        addPlanName=findViewById(R.id.AddPlanName);
 
-        date = findViewById(R.id.date);
-        selectedDate = findViewById(R.id.selectedDate);
-        addDate = findViewById(R.id.addDate);
+        date=findViewById(R.id.date);
+        selectedDate=findViewById(R.id.selectedDate);
+        addDate=findViewById(R.id.addDate);
 
-        time = findViewById(R.id.Time);
-        selectedTime = findViewById(R.id.selectedTime);
-        addTime = findViewById(R.id.addTime);
+        time=findViewById(R.id.Time);
+        selectedTime=findViewById(R.id.selectedTime);
+        addTime=findViewById(R.id.addTime);
 
-        alarm = findViewById(R.id.Alarm);
-        addAlarm = findViewById(R.id.addAlarm);
+        alarm=findViewById(R.id.Alarm);
+        addAlarm=findViewById(R.id.addAlarm);
 
-        memo = findViewById(R.id.memo);
-        addMemo = findViewById(R.id.AddMemo);
+        memo=findViewById(R.id.memo);
+        addMemo=findViewById(R.id.AddMemo);
 
-        saveButton = findViewById(R.id.SaveButton);
-        cancelButton = findViewById(R.id.CancelButton);
+        saveChangesButton=findViewById(R.id.SaveChangesButton);
+        deleteButton=findViewById(R.id.DeleteButton);
 
-        repeatDay = findViewById(R.id.RepeatDay);
-        selectedRepeatDay = findViewById(R.id.selectedRepeatDay);
-        addRepeat = findViewById(R.id.addRepeat);
+        repeatDay=findViewById(R.id.RepeatDay);
+        selectedRepeatDay=findViewById(R.id.selectedRepeatDay);
+        addRepeat=findViewById(R.id.addRepeat);
 
-        BackHome = findViewById(R.id.BackHome);
-        toAddPlan = findViewById(R.id.toAddPlan);
+        BackHome=findViewById(R.id.BackHome);
+
+        //Firebase Uid
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
         // Date 설정 관련 코드
         this.InitializeViewDate();
@@ -106,53 +107,74 @@ public class AddNewPlanActivity extends AppCompatActivity {
         this.InitializeViewTime();
         this.InitializeListenerTime();
 
-        addPlanName.setPrivateImeOptions("defaultInputmode=korean;");
-        addMemo.setPrivateImeOptions("defaultInputmode=korean;");
+        // Get value
+        addPlanName.setText(getIntent().getStringExtra("planName"));
+        selectedDate.setText(getIntent().getStringExtra("date"));
+        selectedTime.setText(getIntent().getStringExtra("time"));
+        addAlarm.setText(getIntent().getStringExtra("alarm"));
+        addMemo.setText(getIntent().getStringExtra("memo"));
+        selectedRepeatDay.setText(getIntent().getStringExtra("repeatDay"));
+        final String keyKey=getIntent().getStringExtra("key");
 
-        //Firebase UID
-        firebaseAuth = FirebaseAuth.getInstance();
+        reference= FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Plan"+keyKey);
 
         BackHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AddNewPlanActivity.this, MainActivityCal.class);
+                Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
                 startActivity(intent);
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        // Make button Event(DeleteButton)
+        deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // insert data to FireBase
+                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
-                //Firebase UID
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-
-                reference = FirebaseDatabase.getInstance().getReference().child(user.getUid()).child("Plan" + planNumber);
+        // Make button Event(SaveChangesButton)
+        saveChangesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        dataSnapshot.getRef().child("complete").setValue(complete.getText().toString());
 
                         if (addPlanName.getText().toString().equals("") || selectedDate.getText().toString().equals("") || selectedTime.getText().toString().equals("") || selectedRepeatDay.getText().toString().equals("")) {
-                            Toast.makeText(AddNewPlanActivity.this, "입력이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
-                        } else {
+                            Toast.makeText(EditPlanActivity.this, "입력이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
+                        }
+
+                        else
+                        {
                             dataSnapshot.getRef().child("planName").setValue(addPlanName.getText().toString());
                             dataSnapshot.getRef().child("date").setValue(selectedDate.getText().toString());
                             dataSnapshot.getRef().child("time").setValue(selectedTime.getText().toString());
                             dataSnapshot.getRef().child("alarm").setValue(addAlarm.getText().toString());
                             dataSnapshot.getRef().child("memo").setValue(addMemo.getText().toString());
-                            dataSnapshot.getRef().child("key").setValue(key);
-                            dataSnapshot.getRef().child("repeatDay").setValue(selectedRepeatDay.getText().toString());
+                            dataSnapshot.getRef().child("key").setValue(keyKey);
 
-                            if (addAlarm.isChecked()) {
-//                    new AlarmMaking(getApplicationContext()).createNotification(); //
+                            if(addAlarm.isChecked())
+                            {
                                 createNotification();
-                            } else {
+                            }
+                            else
+                            {
                                 removeNotification();
                             }
-
-                            Intent intent = new Intent(AddNewPlanActivity.this, PlanListActivity.class);
+                            Intent intent = new Intent(EditPlanActivity.this, PlanListActivity.class);
                             startActivity(intent);
                         }
                     }
@@ -165,22 +187,14 @@ public class AddNewPlanActivity extends AppCompatActivity {
             }
         });
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddNewPlanActivity.this, PlanListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        // 반복설정
+        // 반복설정 수정
         addRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final String[] dayOfWeek = new String[]{"반복 없음", "매일", "1주일마다", "2주일마다", "매달", "매년"};
                 final int[] selectItem = {0};
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(AddNewPlanActivity.this);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(EditPlanActivity.this);
                 dialog.setTitle("반복되는 요일을 선택하세요.").setSingleChoiceItems(dayOfWeek, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -194,10 +208,9 @@ public class AddNewPlanActivity extends AppCompatActivity {
                 }).create().show();
             }
         });
-
     }
 
-    // 알림 create (Add Plan)
+    // 알림 create (Edit Plan)
     private void createNotification() {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
@@ -205,7 +218,7 @@ public class AddNewPlanActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT); //
         builder.setSmallIcon(R.mipmap.ic_launcher);
         builder.setContentTitle(addPlanName.getText());
-        builder.setContentText(selectedDate.getText() + "\t\t" + selectedTime.getText() + "에 일정이 추가되었습니다!");
+        builder.setContentText(selectedDate.getText() + "\t\t" + selectedTime.getText() +"으로 일정이 수정되었습니다!");
         builder.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE); //
         builder.setWhen(System.currentTimeMillis());
         builder.setContentIntent(pendingIntent);//
@@ -221,8 +234,15 @@ public class AddNewPlanActivity extends AppCompatActivity {
             notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_HIGH));
         }
 
-        AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+
+//        //  Set the alarm to start at 8:30 a.m.
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(System.currentTimeMillis());
+//        calendar.set(Calendar.HOUR_OF_DAY, 8);
+//        calendar.set(Calendar.MINUTE, 30);
+
 
         // setRepeating() lets you specify a precise custom interval--in this case,
         // 20 minutes.
@@ -242,47 +262,55 @@ public class AddNewPlanActivity extends AppCompatActivity {
     }
 
     // 사용자가 지정한 날짜 정보를 TextView 에 표시
-    public void InitializeViewDate() {
-        selectedDate = (TextView) findViewById(R.id.selectedDate);
+    public void InitializeViewDate ()
+    {
+        selectedDate=(TextView) findViewById(R.id.selectedDate);
     }
 
     // OnDateSetListener 구현 함수
     // onDateSet() 함수 오버라이딩하여 다이얼로그 창의 완료 버튼 클릭하면 실행되는 CallBack 함수
-    public void InitializeListenerDate() {
-        callbackMethodDate = new DatePickerDialog.OnDateSetListener() {
+    public void InitializeListenerDate()
+    {
+        callbackMethodDate=new DatePickerDialog.OnDateSetListener()
+        {
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+            {
                 monthOfYear++;
-                selectedDate.setText(year + " / " + monthOfYear + " / " + dayOfMonth);
+                selectedDate.setText(year+" / " + monthOfYear + " / " + dayOfMonth);
             }
         };
     }
 
-    public void OnClickHandlerDate(View view) {
-        DatePickerDialog dialog = new DatePickerDialog(this, callbackMethodDate, cYear, cMonth, cDate);
+    public void OnClickHandlerDate(View view)
+    {
+        DatePickerDialog dialog=new DatePickerDialog(this, callbackMethodDate, cYear, cMonth, cDate);
         dialog.show();
     }
 
     // 사용자가 지정한 시간 정보를 TextView 에 표시
-    public void InitializeViewTime() {
-        selectedTime = (TextView) findViewById(R.id.selectedTime);
+    public void InitializeViewTime()
+    {
+        selectedTime=(TextView) findViewById(R.id.selectedTime);
     }
 
     // OnDateSetListener 구현 함수
     // onDateSet() 함수 오버라이딩하여 다이얼로그 창의 완료 버튼 클릭하면 실행되는 CallBack 함수
-    public void InitializeListenerTime() {
-        callbackMethodTime = new TimePickerDialog.OnTimeSetListener() {
+    public void InitializeListenerTime()
+    {
+        callbackMethodTime=new TimePickerDialog.OnTimeSetListener()
+        {
             @Override
-            public void onTimeSet(TimePicker view, int hour, int minute) {
+            public void onTimeSet(TimePicker view, int hour, int minute)
+            {
                 selectedTime.setText(hour + "시 " + minute + "분");
-                alarmTime = (hour - 1) + "시" + minute + "분";
             }
         };
     }
 
-    public void OnClickHandlerTime(View view) {
-        TimePickerDialog dialog = new TimePickerDialog(this, callbackMethodTime, cHour, cMinute, true);
-        dialog.show();
-        ;
+    public void OnClickHandlerTime(View view)
+    {
+        TimePickerDialog dialog=new TimePickerDialog(this, callbackMethodTime, cHour, cMinute, true);
+        dialog.show();;
     }
 }

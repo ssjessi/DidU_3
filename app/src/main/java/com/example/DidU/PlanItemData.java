@@ -1,6 +1,4 @@
-package com.example.login10;
-
-import android.widget.ToggleButton;
+package com.example.DidU;
 
 public class PlanItemData {
 

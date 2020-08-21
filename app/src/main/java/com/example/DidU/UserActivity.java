@@ -1,4 +1,4 @@
-package com.example.login10;
+package com.example.DidU;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -17,8 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = "ProfileActivity";
+public class UserActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private static final String TAG = "UserActivity";
 
     //firebase auth object
     private FirebaseAuth firebaseAuth;
@@ -33,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_user);
 
         //initializing views
         textViewUserEmail = (TextView) findViewById(R.id.textviewUserEmail);
@@ -44,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonGoToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ProfileActivity.this, MainActivityCal.class);
+                Intent intent=new Intent(UserActivity.this, MainActivityCal.class);
                 startActivity(intent);
             }
         });
@@ -61,11 +62,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         //textViewUserEmail의 내용을 변경해 준다.
-        textViewUserEmail.setText("반갑습니다.\n"+ user.getEmail()+"으로 로그인 하였습니다.");
+        textViewUserEmail.setText("Your Account : \n\n" + user.getEmail());
 
         //logout button event
-        buttonLogout.setOnClickListener(this);
-        textivewDelete.setOnClickListener(this);
+        buttonLogout.setOnClickListener((View.OnClickListener) this);
+        textivewDelete.setOnClickListener((View.OnClickListener) this);
 
 
     }
@@ -79,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
         //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야 겠다.
         if(view == textivewDelete) {
-            AlertDialog.Builder alert_confirm = new AlertDialog.Builder(ProfileActivity.this);
+            AlertDialog.Builder alert_confirm = new AlertDialog.Builder(UserActivity.this);
             alert_confirm.setMessage("정말 계정을 삭제 할까요?").setCancelable(false).setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -88,7 +89,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(ProfileActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(UserActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
                                             finish();
                                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                         }
@@ -99,7 +100,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             alert_confirm.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    Toast.makeText(ProfileActivity.this, "취소", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserActivity.this, "취소", Toast.LENGTH_LONG).show();
                 }
             });
             alert_confirm.show();

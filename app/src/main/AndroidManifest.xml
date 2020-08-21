@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.login10">
+    package="com.example.DidU">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -13,22 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CourseRegistrationActivity"></activity>
-        <activity android:name=".UserActivity" />
-        <activity android:name=".FindActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.DidU.CourseRegistrationActivity"></activity>
+        <activity android:name="com.example.DidU.UserActivity" />
+        <activity android:name="com.example.DidU.FindActivity" />
+        <activity android:name="com.example.DidU.ProfileActivity" />
+        <activity android:name="com.example.DidU.LoginActivity" />
+        <activity android:name="com.example.DidU.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivityCal" />
-        <activity android:name=".PlanListActivity" />
-        <activity android:name=".AddNewPlanActivity" />
-        <activity android:name=".EditPlanActivity" />
+        <activity android:name="com.example.DidU.MainActivityCal" />
+        <activity android:name="com.example.DidU.PlanListActivity" />
+        <activity android:name="com.example.DidU.AddNewPlanActivity" />
+        <activity android:name="com.example.DidU.EditPlanActivity" />
     </application>
 
 </manifest>
