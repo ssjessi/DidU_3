@@ -1,160 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     tools:context=".MainActivityCal">
-
-
     <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="432dp"
-        android:layout_height="460dp"
-        android:background="#D8D8D8"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout11"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="421dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="444dp"
+            android:background="#D8D8D8"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:orientation="horizontal">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/MyList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="1dp"
+                        android:gravity="center_horizontal"
+                        android:text="@string/did_u"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="#5E5D5D"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btn_open"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/background_menu"
+                        android:text="@string/menu"
+                        android:textColor="#000"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/MyList"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/MyList" />
+
+                    <Button
+                        android:id="@+id/userButton"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/background_menu"
+                        android:text="@string/user"
+                        android:textColor="#000"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/MyList" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="-355dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/background_calendar"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/MyPlans"
+            android:layout_width="match_parent"
+            android:layout_height="246dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="1dp"
+            tools:ignore="MissingConstraints">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="16dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_open"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="62dp"
-                android:layout_marginRight="62dp"
-                android:background="@drawable/background_menu"
-                android:text="@string/menu"
-                android:textColor="#000"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/MyList"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/MyList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="76dp"
-                android:layout_marginRight="76dp"
-                android:layout_marginBottom="4dp"
-                android:gravity="center_horizontal"
-                android:text="@string/did_u"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="#5E5D5D"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/userButton"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.011" />
+                <Button
+                    android:id="@+id/addNewButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/background_addbutton"
+                    android:text="@string/addButton"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/showListButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/userButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/background_menu"
-                android:text="@string/user"
-                android:textColor="#000"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                </Button>
 
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="374dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_calendar"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/MyList"
-                app:layout_constraintVertical_bias="0.448" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/showListButton"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/background_addbutton"
+                    android:text="@string/showList"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/addNewButton"
+                    app:layout_constraintTop_toTopOf="parent"></Button>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </LinearLayout>
     </LinearLayout>
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MyPlans"
-        android:layout_width="401dp"
-        android:layout_height="268dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <Button
-        android:id="@+id/addNewButton"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="58dp"
-        android:layout_marginLeft="58dp"
-        android:layout_marginBottom="43dp"
-        android:background="@drawable/background_addbutton"
-        android:text="@string/addButton"
-        android:textColor="#FFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </Button>
-
-    <Button
-        android:id="@+id/showListButton"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
-        android:background="@drawable/background_addbutton"
-        android:text="@string/showList"
-        android:textColor="#FFF"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/addNewButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/addNewButton"
-        app:layout_constraintTop_toTopOf="@+id/addNewButton"
-        app:layout_constraintVertical_bias="1.0"></Button>
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/activity_drawer"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <include layout="@layout/activity_drawer"/>
+</androidx.drawerlayout.widget.DrawerLayout>
