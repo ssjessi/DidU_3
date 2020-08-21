@@ -17,6 +17,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/drawerToUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -27,42 +28,42 @@
 
     <TextView
         android:id="@+id/toAddPlan"
+        android:elegantTextHeight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:gravity="center_horizontal"
         android:text="일정추가"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 
     <TextView
-        android:id="@+id/toPlanList"
+        android:id="@+id/toCheckPlan"
+        android:elegantTextHeight="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:gravity="center_horizontal"
         android:text="일정확인"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 
     <TextView
         android:layout_width="match_parent"
+        android:elegantTextHeight="true"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:gravity="center_horizontal"
         android:text="수강교환등록"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 
     <TextView
         android:layout_width="match_parent"
+        android:elegantTextHeight="true"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:gravity="center_horizontal"
         android:text="수강교환찾기"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
