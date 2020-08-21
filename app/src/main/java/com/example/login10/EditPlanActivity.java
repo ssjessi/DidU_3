@@ -56,7 +56,7 @@ public class EditPlanActivity extends AppCompatActivity {
     // 현재 시각 구하기
     Calendar calendar=Calendar.getInstance();
     int cYear=calendar.get(Calendar.YEAR);
-    int cMonth=calendar.get(Calendar.MONTH)+1;
+    int cMonth=calendar.get(Calendar.MONTH);
     int cDate=calendar.get(Calendar.DATE);
     int cHour=calendar.get(Calendar.HOUR_OF_DAY);
     int cMinute=calendar.get(Calendar.MINUTE);
@@ -126,6 +126,25 @@ public class EditPlanActivity extends AppCompatActivity {
             }
         });
 
+        // Make button Event(DeleteButton)
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful())
+                        {
+                            Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
         // Make button Event(SaveChangesButton)
         saveChangesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,25 +182,6 @@ public class EditPlanActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
-            }
-        });
-
-        // Make button Event(DeleteButton)
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Intent intent=new Intent(EditPlanActivity.this, PlanListActivity.class);
-                            startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(getApplicationContext(), "Fail", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -276,6 +276,7 @@ public class EditPlanActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
             {
+                monthOfYear++;
                 selectedDate.setText(year+" / " + monthOfYear + " / " + dayOfMonth);
             }
         };

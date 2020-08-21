@@ -4,7 +4,7 @@
     <string name="user">user</string>
     <string name="ShowList">showList</string>
     <string name="add">add</string>
-    <string name="my_list">My List</string>
+    <string name="my_list">일정 목록</string>
     <string name="planName">PlanName</string>
     <string name="memo">메모</string>
     <string name="PlanTime">8:00</string>
@@ -24,7 +24,7 @@
     <string name="write_memo">Write your memo.</string>
     <string name="cancel">취소</string>
     <string name="save">저장</string>
-    <string name="edit_plan">Edit Plan</string>
+    <string name="edit_plan">일정 수정</string>
     <string name="save_changes">변경 저장</string>
     <string name="delete">삭제</string>
     <string name="complete">O</string>
@@ -55,5 +55,5 @@
     <string name="GoogleLogin">회원이시면 여기에서 로그인 해주세요.</string>
     <string name="Home">홈</string>
     <string name="Logout">로그아웃</string>
-    <string name="EraseUser">회원탈퇴 합니다.</string>
+    <string name="EraseUser">회원탈퇴</string>
 </resources>

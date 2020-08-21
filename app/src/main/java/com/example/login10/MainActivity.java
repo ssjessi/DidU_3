@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         dataSnapshot.getRef().child("planName").setValue("일정 이름 예시");
                                         dataSnapshot.getRef().child("date").setValue("년도 / 월 / 일");
                                         dataSnapshot.getRef().child("time").setValue("몇시 몇분");
-                                        dataSnapshot.getRef().child("alarm").setValue("알람 ON/OFF 여부");
+                                        dataSnapshot.getRef().child("alarm").setValue("ON");
                                         dataSnapshot.getRef().child("memo").setValue("일정 메모 예시");
                                         dataSnapshot.getRef().child("repeatDay").setValue("반복 예시");
                                         dataSnapshot.getRef().child("key").setValue(key);

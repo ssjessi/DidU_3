@@ -71,7 +71,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="360dp"
             android:layout_marginBottom="20dp"
-            android:text="회원탈퇴"
+            android:text="@string/EraseUser"
             android:textColor="#5E5D5D"
             tools:ignore="HardcodedText" />
 
