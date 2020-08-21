@@ -116,28 +116,10 @@ public class MainActivityCal extends AppCompatActivity {
         });
 
         myList=findViewById(R.id.MyList);
-        addNewButton=findViewById(R.id.addNewButton);
-        showListButton=findViewById(R.id.showListButton);
         userButton = findViewById(R.id.userButton);
 
         //Firebase Uid
         firebaseAuth = FirebaseAuth.getInstance();
-
-        addNewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivityCal.this, AddNewPlanActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        showListButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivityCal.this, PlanListActivity.class);
-                startActivity(intent);
-            }
-        });
 
         userButton.setOnClickListener(new View.OnClickListener() {
             @Override

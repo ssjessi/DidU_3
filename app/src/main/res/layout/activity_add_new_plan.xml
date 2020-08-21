@@ -55,7 +55,7 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="400dp"
+        android:layout_width="350dp"
         android:layout_height="500dp"
         android:layout_marginTop="150dp"
         android:layout_marginBottom="32dp"
@@ -244,11 +244,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout14"
-        android:layout_width="408dp"
+        android:layout_width="370dp"
         android:layout_height="135dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="330dp"
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="60dp"
@@ -256,7 +256,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout13">
 
         <Button
             android:id="@+id/SaveButton"

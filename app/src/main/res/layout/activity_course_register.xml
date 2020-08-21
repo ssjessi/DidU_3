@@ -9,12 +9,10 @@
 
     <LinearLayout
         android:id="@+id/linearLayout16"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="218dp"
+        android:layout_width="match_parent"
+        android:layout_height="334dp"
         android:background="#D8D8D8"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/SaveButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -47,19 +45,19 @@
 
     <ScrollView
         android:id="@+id/scrollView4"
-        android:layout_width="402dp"
-        android:layout_height="517dp"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="144dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/background_list"
         android:orientation="vertical"
         android:paddingTop="20dp"
         android:paddingBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/SaveButton"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -166,40 +164,50 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/SaveButton"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/background_button"
-        android:text="@string/save"
-        android:textColor="#FFF"
-        android:textSize="18sp"
+    <LinearLayout
+        android:id="@+id/linearLayout10"
+        android:layout_width="370dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="65dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout16">
 
-    <Button
-        android:id="@+id/CancelButton"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="92dp"
-        android:background="@drawable/background_cancel_button"
-        android:text="@string/cancel"
-        android:textColor="#AFAFAF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SaveButton" />
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/background_button"
+            android:text="@string/save"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/CancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="92dp"
+            android:background="@drawable/background_cancel_button"
+            android:text="@string/cancel"
+            android:textColor="#AFAFAF"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
