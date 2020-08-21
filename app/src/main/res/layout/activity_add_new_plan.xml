@@ -1,55 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/linearLayout12"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivityCal">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout13"
         android:layout_width="match_parent"
-        android:layout_height="444dp"
-        android:background="#D8D8D8" >
+        android:layout_height="334dp"
+        android:background="#D8D8D8"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/BackHome"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:text="@string/backHome"
-            android:background="#D8D8D8"
             android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:background="#D8D8D8"
             android:contentDescription="@string/todo"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:text="@string/backHome"
             android:textColor="#5E5D5D"
-            android:layout_marginLeft="10dp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/MyList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
+            android:gravity="center_horizontal"
             android:text="@string/my_list"
             android:textAlignment="center"
-            android:textStyle="bold"
             android:textColor="#5E5D5D"
-            android:gravity="center_horizontal" />
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="492dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="-300dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="1dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="400dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/background_list"
         android:orientation="vertical"
         android:paddingTop="20dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout13">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -224,29 +233,40 @@
                 android:textColorHint="#808080" />
         </LinearLayout>
     </ScrollView>
-    
-    <Button
-        android:id="@+id/SaveButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/save"
-        android:textColor="#FFF"
-        android:background="@drawable/background_button"
-        android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/CancelButton"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:text="@string/cancel"
-        android:textColor="#AFAFAF"
-        android:background="@drawable/background_cancel_button"
-        android:textSize="18sp" />
+    <LinearLayout
+        android:id="@+id/linearLayout14"
+        android:layout_width="408dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-</LinearLayout>
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/background_button"
+            android:text="@string/save"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/CancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/background_cancel_button"
+            android:text="@string/cancel"
+            android:textColor="#AFAFAF"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

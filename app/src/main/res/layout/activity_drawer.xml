@@ -1,62 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer"
     android:layout_width="240dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="#5E5E5E"
-    android:orientation="vertical">
+    android:background="#5E5E5E">
 
     <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="60dp"
+        android:layout_marginTop="60dp"
         android:text="@string/did_u"
         android:textColor="#2E2E2E"
         android:textSize="40sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/drawerToUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="204dp"
         android:background="@mipmap/human"
-        android:src="@mipmap/human" />
+        android:src="@mipmap/human"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/toAddPlan"
-        android:elegantTextHeight="true"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:elegantTextHeight="true"
         android:text="일정추가"
         android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drawerToUser"
+        app:drawableLeftCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/toCheckPlan"
-        android:elegantTextHeight="true"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:elegantTextHeight="true"
         android:text="일정확인"
         android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toAddPlan" />
 
     <TextView
         android:id="@+id/toCourseRegi"
-        android:layout_width="match_parent"
-        android:elegantTextHeight="true"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
         android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:elegantTextHeight="true"
         android:text="수강 정원 확인"
         android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toCheckPlan" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
