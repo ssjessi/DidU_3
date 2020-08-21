@@ -133,12 +133,6 @@ public class EditPlanActivity extends AppCompatActivity {
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        dataSnapshot.getRef().child("planName").setValue(addPlanName.getText().toString());
-                        dataSnapshot.getRef().child("date").setValue(selectedDate.getText().toString());
-                        dataSnapshot.getRef().child("time").setValue(selectedTime.getText().toString());
-                        dataSnapshot.getRef().child("alarm").setValue(addAlarm.getText().toString());
-                        dataSnapshot.getRef().child("memo").setValue(addMemo.getText().toString());
-                        dataSnapshot.getRef().child("key").setValue(keyKey);
 
                         if (addPlanName.getText().toString().equals("") || selectedDate.getText().toString().equals("") || selectedTime.getText().toString().equals("") || selectedRepeatDay.getText().toString().equals("")) {
                             Toast.makeText(EditPlanActivity.this, "입력이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
@@ -146,6 +140,13 @@ public class EditPlanActivity extends AppCompatActivity {
 
                         else
                         {
+                            dataSnapshot.getRef().child("planName").setValue(addPlanName.getText().toString());
+                            dataSnapshot.getRef().child("date").setValue(selectedDate.getText().toString());
+                            dataSnapshot.getRef().child("time").setValue(selectedTime.getText().toString());
+                            dataSnapshot.getRef().child("alarm").setValue(addAlarm.getText().toString());
+                            dataSnapshot.getRef().child("memo").setValue(addMemo.getText().toString());
+                            dataSnapshot.getRef().child("key").setValue(keyKey);
+
                             if(addAlarm.isChecked())
                             {
                                 createNotification();

@@ -60,8 +60,8 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                 intent2.putExtra("date", getDateGet);
                 intent2.putExtra("time", getTimeGet);
                 intent2.putExtra("alarm", getAlarmGet);
-                intent2.putExtra("key", getKeyGet);
                 intent2.putExtra("repeatDay", getRepeatDayGet);
+                intent2.putExtra("key", getKeyGet);
                 context.startActivity(intent2);
             }
         });

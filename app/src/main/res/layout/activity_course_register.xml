@@ -90,6 +90,7 @@
                 android:textColor="#000"
                 android:textSize="18sp" />
 
+
             <EditText
                 android:id="@+id/student_pw"
                 android:layout_width="match_parent"
@@ -97,12 +98,11 @@
                 android:autofillHints=""
                 android:background="@drawable/background_input_plan"
                 android:hint="비밀번호"
-                android:inputType="text"
+                android:inputType="textPassword"
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"
                 android:textColor="#000"
                 android:textColorHint="#808080" />
-
 
             <TextView
                 android:id="@+id/lec_Num"

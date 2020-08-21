@@ -77,10 +77,6 @@ public class CourseRegistrationActivity extends AppCompatActivity {
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        dataSnapshot.getRef().child("id").setValue(student_id.getText().toString());
-                        dataSnapshot.getRef().child("password").setValue(student_pw.getText().toString());
-                        dataSnapshot.getRef().child("lectureNumber").setValue(addLec_Num.getText().toString());
-                        dataSnapshot.getRef().child("classNumber").setValue(add_div_class_num.getText().toString());
 
                         if (student_id.getText().toString().equals("") || student_pw.getText().toString().equals("") || addLec_Num.getText().toString().equals("") || add_div_class_num.getText().toString().equals("")) {
                             Toast.makeText(CourseRegistrationActivity.this, "입력이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
@@ -88,6 +84,11 @@ public class CourseRegistrationActivity extends AppCompatActivity {
 
                         else
                         {
+                            dataSnapshot.getRef().child("id").setValue(student_id.getText().toString());
+                            dataSnapshot.getRef().child("password").setValue(student_pw.getText().toString());
+                            dataSnapshot.getRef().child("lectureNumber").setValue(addLec_Num.getText().toString());
+                            dataSnapshot.getRef().child("classNumber").setValue(add_div_class_num.getText().toString());
+
                             Intent intent = new Intent(CourseRegistrationActivity.this, MainActivityCal.class);
                             startActivity(intent);
                         }
