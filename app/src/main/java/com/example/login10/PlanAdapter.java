@@ -39,13 +39,9 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
         myViewHolder.date.setText(planItemData.get(position).getDate());
         myViewHolder.time.setText(planItemData.get(position).getTime());
         myViewHolder.alarm.setText(planItemData.get(position).getAlarm());
+        myViewHolder.repeatDay.setText(planItemData.get(position).getRepeatDay());
 
         //myViewHolder.complete.setText("true");
-
-//        if(myViewHolder.complete.isChecked())
-//            myViewHolder.complete.setText("true");
-//        else
-//            myViewHolder.complete.setText("false");
 
         final String getPlanNameGet=planItemData.get(position).getPlanName();
         final String getMemoGet=planItemData.get(position).getMemo();
@@ -53,6 +49,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
         final String getTimeGet=planItemData.get(position).getTime();
         final String getAlarmGet=planItemData.get(position).getAlarm();
         final String getKeyGet=planItemData.get(position).getKey();
+        final String getRepeatDayGet=planItemData.get(position).getRepeatDay();
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +61,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                 intent2.putExtra("time", getTimeGet);
                 intent2.putExtra("alarm", getAlarmGet);
                 intent2.putExtra("key", getKeyGet);
+                intent2.putExtra("repeatDay", getRepeatDayGet);
                 context.startActivity(intent2);
             }
         });
@@ -76,7 +74,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
 
     class MyViewHolder extends RecyclerView.ViewHolder
     {
-        TextView planName, memo, date, time, alarm, key;
+        TextView planName, memo, date, time, alarm, key, repeatDay;
 //        ToggleButton complete;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -87,6 +85,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
             date=(TextView) itemView.findViewById(R.id.date);
             time=(TextView) itemView.findViewById(R.id.time);
             alarm=(TextView) itemView.findViewById(R.id.alarm);
+            repeatDay=(TextView) itemView.findViewById(R.id.repeat);
 //            complete=(ToggleButton) itemView.findViewById(R.id.completeOX);
         }
     }

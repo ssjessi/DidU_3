@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ import java.util.Calendar;
 
 public class MainActivityCal extends AppCompatActivity {
 
+    // 화면 연결
+    TextView toAddPlan, toCheckPlan;
     TextView myList; //, today;
     Button addNewButton, showListButton;
     Button userButton;
@@ -39,6 +42,7 @@ public class MainActivityCal extends AppCompatActivity {
     RecyclerView myPlans;
     ArrayList<PlanItemData> list;
     PlanAdapter planAdapter;
+    Button drawerToUser;
 
     //Firebase Uid
     FirebaseAuth firebaseAuth;
@@ -65,6 +69,26 @@ public class MainActivityCal extends AppCompatActivity {
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
         drawerView=(View)findViewById(R.id.drawer);
 
+        // 화면 연결
+        toAddPlan=(TextView) findViewById(R.id.toAddPlan);
+        toCheckPlan=(TextView) findViewById(R.id.toCheckPlan);
+
+        toAddPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivityCal.this, AddNewPlanActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        toCheckPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivityCal.this, PlanListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Button btn_open=(Button)findViewById(R.id.btn_open);
         btn_open.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -73,23 +97,22 @@ public class MainActivityCal extends AppCompatActivity {
             }
         });
 
+        drawerToUser=(Button) findViewById(R.id.drawerToUser);
+        drawerToUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivityCal.this, UserActivity.class);
+                startActivity(intent);
+            }
+        });
+
         myList=findViewById(R.id.MyList);
-        // today=findViewById(R.id.today);
         addNewButton=findViewById(R.id.addNewButton);
         showListButton=findViewById(R.id.showListButton);
         userButton = findViewById(R.id.userButton);
 
         //Firebase Uid
         firebaseAuth = FirebaseAuth.getInstance();
-
-//        // Firebase 2개 연결
-//        FirebaseDatabase database=FirebaseDatabase.getInstance();
-//        FirebaseOptions options=new FirebaseOptions.Builder().setApplicationId("com.example.login10").setApiKey("AIzaSyARFTeQWQXYEmvmp_7tdS9QHmB_XtFTczg").setDatabaseUrl("https://didu1je.firebaseio.com/").build();
-//        FirebaseApp.initializeApp(this, options, "second");
-//        // Retrieve my other app;
-//        FirebaseApp app= FirebaseApp.getInstance("second");
-//        // Get the database for the other app
-//        FirebaseDatabase secondDatabase=FirebaseDatabase.getInstance(app);
 
         addNewButton.setOnClickListener(new View.OnClickListener() {
             @Override

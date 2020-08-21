@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:orientation="vertical"
     tools:context=".ProfileActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
         tools:ignore="UselessParent">
 
 
@@ -21,10 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
@@ -33,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@mipmap/ic_launcher"
+                android:background="@mipmap/human"
+                android:src="@mipmap/human"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -44,36 +42,39 @@
                 android:layout_margin="16dp"
                 android:width="400dp"
                 android:text="" />
-
-
         </LinearLayout>
 
         <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="wrap_content"
+            android:id="@+id/goToMain"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="로그아웃"
-            tools:ignore="HardcodedText" />
+            android:layout_marginTop="60dp"
+            android:text="@string/Home"
+            android:background="@drawable/background_button"
+            android:textColor="#FFF" />
 
         <Button
-            android:id="@+id/goToMain"
-            android:layout_width="match_parent"
+            android:id="@+id/buttonLogout"
+            android:layout_width="270dp"
             android:layout_height="wrap_content"
-            android:text="Go To Main"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
-            tools:ignore="HardcodedText" />
+            android:text="@string/LogOut"
+            android:background="@drawable/background_button"
+            android:textColor="#FFF"/>
 
         <TextView
-            android:text="회원탈퇴 합니다."
             android:id="@+id/textviewDelete"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/colorAccent"
-            android:layout_margin="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="360dp"
+            android:layout_marginBottom="20dp"
+            android:text="회원탈퇴"
+            android:textColor="#5E5D5D"
             tools:ignore="HardcodedText" />
 
     </LinearLayout>
-</RelativeLayout>
+
+</LinearLayout>

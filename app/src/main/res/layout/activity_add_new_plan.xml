@@ -9,40 +9,47 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
-        android:background="#000" >
+        android:layout_height="444dp"
+        android:background="#D8D8D8" >
+
+        <Button
+            android:id="@+id/BackHome"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="@string/backHome"
+            android:background="#D8D8D8"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:contentDescription="@string/todo"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#5E5D5D"
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:id="@+id/MyList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:textSize="24sp"
-            android:layout_marginBottom="25dp"
-            android:text="@string/add_new_plan"
-            android:textStyle="bold"
+            android:textSize="28sp"
+            android:text="@string/my_list"
             android:textAlignment="center"
-            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:textColor="#5E5D5D"
             android:gravity="center_horizontal" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="20dp"
-            android:background="#000" />
     </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="493dp"
+        android:layout_height="492dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-300dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="1dp"
         android:background="@drawable/background_list"
         android:orientation="vertical"
         android:paddingTop="20dp"
-        android:paddingBottom="20dp">
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,6 +168,37 @@
                 android:textColor="#FFF" />
 
             <TextView
+                android:id="@+id/RepeatDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/repeat"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/selectedRepeatDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/addRepeat"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/background_addbutton"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/choose_repeated_day_of_week"
+                android:textColor="#FFF" />
+
+            <TextView
                 android:id="@+id/Memo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -174,7 +212,7 @@
                 android:id="@+id/AddMemo"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginBottom="35dp"
+                android:layout_marginBottom="15dp"
                 android:autofillHints=""
                 android:background="@drawable/background_input_plan"
                 android:hint="@string/write_memo"
@@ -191,7 +229,7 @@
         android:id="@+id/SaveButton"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/save"

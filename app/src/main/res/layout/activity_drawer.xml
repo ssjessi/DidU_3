@@ -1,29 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
     android:layout_width="240dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:id="@+id/drawer"
-    android:background="#000000"
+    android:background="#5E5E5E"
     android:orientation="vertical">
 
     <TextView
-        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="60dp"
+        android:text="@string/did_u"
+        android:textColor="#2E2E2E"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="70dp"
+        android:background="@mipmap/human"
+        android:src="@mipmap/human" />
+
+    <TextView
+        android:id="@+id/toAddPlan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_launcher_foreground"
         android:gravity="center_horizontal"
         android:text="일정추가"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 
     <TextView
-        android:drawableLeft="@drawable/ic_launcher_foreground"
+        android:id="@+id/toPlanList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_launcher_foreground"
         android:gravity="center_horizontal"
         android:text="일정확인"
         android:textColor="#FFFFFF"
@@ -40,22 +58,12 @@
         android:textSize="25dp" />
 
     <TextView
-        android:drawableLeft="@drawable/ic_launcher_foreground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_launcher_foreground"
         android:gravity="center_horizontal"
         android:text="수강교환찾기"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/ic_launcher_foreground"
-        android:gravity="center_horizontal"
-        android:text="Message"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />
 
