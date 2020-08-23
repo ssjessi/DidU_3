@@ -74,8 +74,8 @@
         android:id="@+id/textViewSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="261dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="156dp"
         android:gravity="center_horizontal"
         android:text="@string/GoogleLogin"
         android:textAlignment="center"
@@ -88,12 +88,13 @@
         android:id="@+id/textviewMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="331dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="220dp"
         android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewSignin" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

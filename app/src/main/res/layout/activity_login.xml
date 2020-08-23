@@ -68,7 +68,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="4dp"
         android:text="@string/NewUser"
         app:layout_constraintEnd_toStartOf="@+id/textViewFindpassword"
         app:layout_constraintHorizontal_bias="0.09"
@@ -81,17 +80,16 @@
         android:id="@+id/textViewFindpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="405dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:layout_marginBottom="272dp"
         android:text="@string/notRememberPW"
         android:textColor="#000"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignup"
-        app:layout_constraintVertical_bias="0.504" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignup" />
 
     <TextView
         android:id="@+id/textviewMessage"

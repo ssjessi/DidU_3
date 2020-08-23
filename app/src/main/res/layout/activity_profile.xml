@@ -57,6 +57,7 @@
         android:id="@+id/textviewDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="141dp"
         android:text="@string/EraseUser"
         android:textColor="#000"

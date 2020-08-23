@@ -10,67 +10,72 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="275dp"
+        android:layout_width="401dp"
+        android:layout_height="389dp"
         android:background="#D8D8D8"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/addNewButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/BackHome"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:background="#D8D8D8"
-            android:contentDescription="@string/todo"
-            android:text="@string/backHome"
-            android:textColor="#5E5D5D"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/MyList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/my_list"
-            android:textAlignment="center"
-            android:textColor="#5E5D5D"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/today"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:textAlignment="center"
-            android:textColor="#5E5D5D"
-            android:textSize="18sp" />
+        app:layout_constraintTop_toTopOf="parent" >
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/MyPlans"
-        android:layout_width="350dp"
-        android:layout_height="550dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="144dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="22dp"
-        app:layout_constraintBottom_toTopOf="@+id/addNewButton"
+    <TextView
+        android:id="@+id/MyList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="@string/my_list"
+        android:textAlignment="center"
+        android:textColor="#5E5D5D"
+        android:textSize="28sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/BackHome" />
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="#5E5D5D"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyList" />
+
+    <Button
+        android:id="@+id/BackHome"
+        android:layout_width="25dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="#D8D8D8"
+        android:contentDescription="@string/todo"
+        android:text="@string/backHome"
+        android:textColor="#5E5D5D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/MyPlans"
+        android:layout_width="366dp"
+        android:layout_height="472dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/today">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -78,7 +83,7 @@
         android:id="@+id/addNewButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/background_addbutton"
         android:contentDescription="@string/add"
         android:text="@string/addButton"
@@ -86,6 +91,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyPlans">
 
